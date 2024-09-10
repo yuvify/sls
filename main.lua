@@ -2,13 +2,6 @@ local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
-local function sendNotification(title, text)
-    game.StarterGui:SetCore("SendNotification", {
-        Title = title,
-        Text = text,
-        Duration = 3
-    })
-end
 
 local function createAndStabilizePart(part, size, name, transparency)
     local existingClone = part.Parent:FindFirstChild(name)
@@ -142,51 +135,31 @@ local function expandParts()
     end
 end
 
-local function createCustomGUI()
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "ExpandPartsGui"
-    screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+getgenv().SecureMode = true
 
-    local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(0, 220, 0, 70)
-    frame.Position = UDim2.new(0, 10, 0, 10)
-    frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    frame.BorderSizePixel = 0
-    frame.BackgroundTransparency = 0.2
-    frame.Parent = screenGui
+txt = "SLS Devil"
 
-    local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, 0, 0, 30)
-    title.Position = UDim2.new(0, 0, 0, 0)
-    title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    title.BorderSizePixel = 0
-    title.Text = "SLS 2.0"
-    title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    title.Font = Enum.Font.Gotham
-    title.TextSize = 14
-    title.Parent = frame
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-    local button = Instance.new("TextButton")
-    button.Size = UDim2.new(1, 0, 0, 40)
-    button.Position = UDim2.new(0, 0, 0, 30)
-    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-    button.BorderSizePixel = 0
-    button.Text = "GK Mode"
-    button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.Font = Enum.Font.Gotham
-    button.TextSize = 14
-    button.Parent = frame
+local Window = Rayfield:CreateWindow({
+    
+   Name = txt,
+   LoadingTitle = txt,
+   LoadingSubtitle = "made by @yxvi",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "bluedevil"
+   },
 
-    button.MouseButton1Click:Connect(expandParts)
-end
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
 
-local function onKeyPress(input)
-    if input.KeyCode == Enum.KeyCode.T then
-        expandParts()
-    end
-end
-
-UserInputService.InputBegan:Connect(onKeyPress)
+   KeySystem = false
+})
 
 local function onCharacterAdded()
     createCustomGUI()
