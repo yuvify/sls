@@ -25,13 +25,6 @@ local function createAndStabilizePart(part, size, name, transparency)
     clone.Anchored = false
     clone.Parent = part.Parent
 
-    local outline = Instance.new("Frame")
-	outline.Size = UDim2.new(1, 0, 1, 0)
-	outline.BorderSizePixel = 2
-	outline.BorderColor3 = Color3.fromRGB(0, 0, 255)
-	outline.BackgroundTransparency = 1
-	outline.Parent = clone
-
     local originalAttachment = Instance.new("Attachment")
     originalAttachment.Name = "OriginalAttachment"
     originalAttachment.Parent = part
@@ -167,7 +160,7 @@ local function createCustomGUI()
     title.Position = UDim2.new(0, 0, 0, 0)
     title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
     title.BorderSizePixel = 0
-    title.Text = "bluedevil 2.0"
+    title.Text = "SLS 2.0"
     title.TextColor3 = Color3.fromRGB(255, 255, 255)
     title.Font = Enum.Font.Gotham
     title.TextSize = 14
